@@ -1,0 +1,6 @@
+apiVersion: webapp.local.domin/v1
+kind: SampleCRD
+metadata:
+  name: samplecrd-sample
+spec:
+  # TODO(user): Add fields here
