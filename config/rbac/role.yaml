@@ -7,6 +7,50 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs/status
+  verbs:
+  - get
+- apiGroups:
+  - webapp.local.domin
+  resources:
+  - cronjobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - webapp.local.domin
+  resources:
+  - cronjobs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - webapp.local.domin
+  resources:
+  - cronjobs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
   - webapp.local.domin
   resources:
   - samplecrds

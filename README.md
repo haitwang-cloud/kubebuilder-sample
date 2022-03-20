@@ -79,3 +79,41 @@ func (r *SampleCRDReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 make install
 make run
 ```
+
+## Advanced
+
+### Create an API
+
+- Run the following command to create a new API (group/version) as webapp/v1 and the new Kind(CRD) CronJob on it:
+
+```sh
+kubebuilder create api --group webapp --version v1 --kind CronJob
+```
+
+### Add webhook
+
+- Run the following command to create a new webhook for the the API CronJob :
+
+```sh
+kubebuilder create webhook --group webapp --version v1 --kind CronJob --defaulting --programmatic-validation
+
+```
+
+### Running locally
+
+#### Run the following command to run locally
+```sh
+make install
+make run ENABLE_WEBHOOKS=false
+```
+![](./pics/controller.jpg)
+
+#### Run the following command to test CRD
+```sh
+kubectl create -f config/samples/webapp_v1_cronjob.yaml
+kubectl get cronjob.webapp.local.domin -o yaml
+kubectl get job
+```
+![](./pics/job.jpg)
+Cronjob logs:
+![](./pics/controller_log.jpg)
